@@ -51,26 +51,24 @@ class instagram_bot:
 
   def get_followers(self):
     self.driver.get("https://www.instagram.com/maplestory/")
-    # time.sleep(2)
-    # search_input = self.driver.find_element(By.XPATH, value="/html/body/div[1]/div/div/div/div[2]/div/div/div[1]/div[1]/div[1]/section/main/div/div/div/div/div/div/div[2]/div[1]/div/input").send_keys("maplestory")
-    # time.sleep(2)
-    # search_enter = self.driver.find_element(By.XPATH, value="/html/body/div[1]/div/div/div/div[2]/div/div/div[1]/div[1]/div[1]/section/main/div/div/div/div/div/div/div[2]/div[1]/div/input").send_keys(Keys.ENTER)
-    # time.sleep(2)
-    # select = self.driver.find_element(By.XPATH, value="/html/body/div[1]/div/div/div/div[2]/div/div/div[1]/div[1]/div[1]/section/main/div/div/div/div/div/div/div[2]/div[2]/div/div/div[1]/div/div/div/div[3]/div/label/div/input").click()
     time.sleep(3)
     followers = self.driver.find_element(By.XPATH, value="/html/body/div[2]/div/div/div/div[2]/div/div/div[1]/div[2]/div/div[1]/section/main/div/header/section[3]/ul/li[2]/div/a").click()
     time.sleep(5)
     button_list = self.driver.find_elements(By.CSS_SELECTOR, value="button")
     print(len(button_list))
+    
     for i in range(len(button_list)):
-      button_list[i].click()
+      time.sleep(5)
+      button = self.driver.find_element(By.XPATH, value="/html/body/div[5]/div[2]/div/div/div[1]/div/div[2]/div/div/div/div/div[2]/div/div/div[2]/div[2]/div/div[1]/div/div/div/div[3]/div/button")
+      
+      button.click()
 
     # time.sleep(3)
     # for i in range(20):
     #   time.sleep(5)
     #   test_click = self.driver.find_element(By.XPATH, value="/html/body/div[5]/div[2]/div/div/div[1]/div/div[2]/div/div/div/div/div[2]/div/div/div[2]/div[2]/div/div[1]/div/div/div/div[3]/div/button").click()
     #   time.sleep(2)
-    #   cancel = self.driver.find_element(By.XPATH, value="/html/body/div[6]/div[1]/div/div[2]/div/div/div/div/div/div/button[2]").click()
+    #   cancel = self.driver.find_element(By.XPATH, value="/html/body/div [6]/div[1]/div/div[2]/div/div/div/div/div/div/button[2]").click()
 
 
 
