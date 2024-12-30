@@ -47,7 +47,12 @@ class instagram_bot:
     try:
       not_now = self.driver.switch_to.active_element.find_element(By.XPATH, value="/html/body/div[2]/div/div/div/div[2]/div/div/div[1]/div[1]/div[1]/section/main/div/div/div/div/div").click()
     except:
+      not_now = self.driver.switch_to.active_element.find_element(By.XPATH, value="/html/body/div[6]/div[1]/div/div[2]/div/div/div/div/div[2]/div/div/div[2]/button[2]").click()
+    try:
       not_now = self.driver.switch_to.active_element.find_element(By.XPATH, value="/html/body/div[2]/div/div/div/div[2]/div/div/div[1]/div[1]/div[1]/section/main/div/div/div/div/div").click()
+    except:
+      print('not now not found')
+
 
   def get_followers(self):
     self.driver.get("https://www.instagram.com/maplestory/")
@@ -65,24 +70,46 @@ class instagram_bot:
     # time.sleep(3)
     # cancel = self.driver.find_element(By.XPATH, value="/html/body/div[6]/div[1]/div/div[2]/div/div/div/div/div/div/button[2]").click()
     for button in range(len(button_list)):
-      time.sleep(5)
-      # button = self.driver.find_element(By.XPATH, value="/html/body/div[5]/div[2]/div/div/div[1]/div/div[2]/div/div/div/div/div[2]/div/div/div[2]/div[2]/div/div[1]/div/div/div/div[3]/div/button")
-      # button = self.driver.find_element(By.TAG_NAME, value="button")
-      button = self.driver.find_element(By.XPATH, value=f"/html/body/div[5]/div[2]/div/div/div[1]/div/div[2]/div/div/div/div/div[2]/div/div/div[2]/div[2]/div/div[{button+1}]/div/div/div/div[3]/div/button")
-      # self.driver.execute_script("arguments[0].scrollIntoView();", button)
-      WebDriverWait(self.driver, 10).until(EC.element_to_be_clickable(button))
-      button.click()
-      time.sleep(3)
-      self.driver.execute_script("arguments[0].scrollIntoView();", button)
 
+      self.driver.switch_to.active_element
+      time.sleep(3)
       try:
-        OK = self.driver.find_element(self.driver.find_element(By.XPATH, value="/html/body/div[6]/div[1]/div/div[2]/div/div/div/div/div[2]/div/div/div[2]/button[2]"))
+        # button = self.driver.find_element(By.XPATH, value="/html/body/div[5]/div[2]/div/div/div[1]/div/div[2]/div/div/div/div/div[2]/div/div/div[2]/div[2]/div/div[1]/div/div/div/div[3]/div/button")
+        # button = self.driver.find_element(By.TAG_NAME, value="button")
+        button = self.driver.find_element(By.XPATH, value=f"/html/body/div[5]/div[2]/div/div/div[1]/div/div[2]/div/div/div/div/div[2]/div/div/div[2]/div[2]/div/div[{button+1}]/div/div/div/div[3]/div/button")
+        # self.driver.execute_script("arguments[0].scrollIntoView();", button)
+        WebDriverWait(self.driver, 10).until(EC.element_to_be_clickable(button))
+        button.click()
+        time.sleep(2)
+        self.driver.execute_script("arguments[0].scrollIntoView();", button)
       except:
-        print("OK not found")
+        print("Button exception")
 
-      time.sleep(3)
-      cancel = self.driver.find_element(By.XPATH, value="/html/body/div[6]/div[1]/div/div[2]/div/div/div/div/div/div/button[2]").click()
+      time.sleep(2)
+      self.driver.switch_to.active_element
+      try:
+        OK = self.driver.find_element(self.driver.find_element(By.XPATH, value="/html/body/div[6]/div[1]/div/div[2]/div/div/div/div/div[2]/div/div/div[2]/button[2]")).click()
+      except:
+        print("OK 1 not found")
 
+      time.sleep(2)
+      try:
+        OK = self.driver.find_element(self.driver.find_element(By.XPATH, value="/html/body/div[6]/div[1]/div/div[2]/div/div/div/div/div[2]/div/div/div[2]/button[2]")).click()
+      except:
+        print('Ok 2 not found')
+        time.sleep(2)
+      try:
+        OK = self.driver.switch_to.active_element.find_element(self.driver.file_detector(By.XPATH, value="/html/body/div[6]/div[1]/div/div[2]/div/div/div/div/div[2]/div/div/div[2]/button[2]")).click()
+      except:
+        print('Button exception 3')
+      time.sleep(2)
+     
+      try:
+        cancel = self.driver.find_element(By.XPATH, value="/html/body/div[6]/div[1]/div/div[2]/div/div/div/div/div/div/button[2]").click()
+      except:
+        print('cancel not found')
+      
+      
     # time.sleep(3)
     # for i in range(20):
     #   time.sleep(5)
